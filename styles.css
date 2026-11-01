@@ -1,0 +1,405 @@
+/* Ghura Labs. Palette from the Chalkalong logo. */
+
+:root {
+  --board: #1c1c1c;
+  --chalk: #ffffff;
+  --accent: #f6c945;
+
+  /* Light theme (default) */
+  --bg: var(--chalk);
+  --text: var(--board);
+  --muted: #5a5a5a;          /* 6.9:1 on white */
+  --line: #e6e6e3;
+  --card: #fafaf8;
+  --card-line: #e6e6e3;
+  --grid-dot: rgba(28, 28, 28, 0.09);
+  --shadow: 0 1px 2px rgba(28, 28, 28, 0.04), 0 8px 24px rgba(28, 28, 28, 0.06);
+  --shadow-hover: 0 2px 4px rgba(28, 28, 28, 0.05), 0 16px 40px rgba(28, 28, 28, 0.10);
+  --status-bg: #edf6ee;
+  --status-text: #1d6b32;     /* 5.9:1 on its background */
+  --status-dot: #2f9e4f;
+
+  --font-head: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --gutter: 16px;
+  --measure: 44rem;
+  --radius: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--board);
+    --text: var(--chalk);
+    --muted: #b3b3b0;          /* 8.1:1 on board */
+    --line: #2f2f2f;
+    --card: #232323;
+    --card-line: #333333;
+    --grid-dot: rgba(255, 255, 255, 0.07);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+    --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.4);
+    --status-bg: #1f3325;
+    --status-text: #9fe0b1;     /* 8.8:1 on its background */
+    --status-dot: #5fd47f;
+  }
+}
+
+@media (min-width: 640px) {
+  :root { --gutter: 32px; }
+}
+
+/* Base */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1 0 auto; }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.15;
+  margin: 0;
+}
+
+p { margin: 0; }
+
+img { display: block; max-width: 100%; height: auto; }
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+/* Focus: a contrasting inner ring plus the yellow chalk ring, visible in both themes */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--text);
+  border-radius: 4px;
+}
+
+ul[role="list"] { list-style: none; margin: 0; padding: 0; }
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  padding: 0.5rem 0.875rem;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 8px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.skip-link:focus { top: 12px; }
+
+/* Header */
+
+.site-header {
+  position: relative;
+  padding: clamp(4.5rem, 14vw, 9rem) 0 clamp(3rem, 8vw, 5rem);
+  isolation: isolate;
+}
+
+/* Faint whiteboard dot grid, fading out downward */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(var(--grid-dot) 1.2px, transparent 1.6px);
+  background-size: 22px 22px;
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 95%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 95%);
+  pointer-events: none;
+}
+
+.wordmark {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 11vw, 4.5rem);
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.wordmark a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.wordmark .dot,
+.brand-dot {
+  display: inline-block;
+  width: 0.2em;
+  height: 0.2em;
+  margin-left: 0.07em;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: baseline;
+}
+
+.tagline {
+  margin-top: 1.125rem;
+  font-size: clamp(1.125rem, 3.6vw, 1.375rem);
+  color: var(--muted);
+  max-width: 28ch;
+}
+
+/* Sections */
+
+.section { padding-bottom: clamp(3.5rem, 9vw, 5.5rem); }
+
+.section-title {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.875rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Product card */
+
+.products { display: grid; gap: 1.5rem; }
+
+.product {
+  position: relative;
+  display: grid;
+  gap: 1.75rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--card-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 220ms cubic-bezier(.2, .7, .2, 1), box-shadow 220ms ease;
+}
+
+.product:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 13px;
+  margin-bottom: 1.125rem;
+  box-shadow: 0 0 0 1px var(--card-line);
+}
+
+.product-name {
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.product-tagline {
+  margin-top: 0.375rem;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+
+.product-desc {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+
+.product-meta {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.5;
+  background: var(--status-bg);
+  color: var(--status-text);
+}
+
+.status::before {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background: var(--status-dot);
+}
+
+.status--dev {
+  background: var(--line);
+  color: var(--text);
+}
+
+.status--dev::before { background: var(--accent); }
+
+.product-link {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.product-link .arrow {
+  display: inline-block;
+  margin-left: 0.2em;
+  transition: transform 220ms ease;
+}
+
+.product:hover .product-link { text-decoration: underline; }
+.product:hover .product-link .arrow { transform: translate(2px, -2px); }
+
+/* The link covers the whole card, so the card is one big target */
+.product-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.product-link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.product-link:focus-visible::after {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--text);
+}
+
+.product-shot {
+  display: block;
+  justify-self: center;
+  width: min(100%, 220px);
+}
+
+.product-shot img {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--card-line);
+  background: #262626;
+}
+
+@media (min-width: 640px) {
+  .product {
+    grid-template-columns: 1fr 172px;
+    align-items: center;
+    gap: 2.25rem;
+    padding: 2.25rem;
+  }
+
+  .product-shot {
+    width: 100%;
+    transform: rotate(1.5deg);
+    transition: transform 220ms cubic-bezier(.2, .7, .2, 1);
+  }
+
+  .product:hover .product-shot { transform: rotate(0deg); }
+}
+
+/* Contact */
+
+.contact-line {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(1.375rem, 4.5vw, 1.75rem);
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.75rem 0 2.25rem;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+/* 404 */
+
+.notfound {
+  padding-top: clamp(4.5rem, 14vw, 9rem);
+  padding-bottom: 4rem;
+}
+
+.notfound .wordmark { color: var(--text); font-size: clamp(2rem, 8vw, 2.75rem); }
+
+.notfound h1 {
+  font-size: clamp(2rem, 7vw, 3rem);
+  letter-spacing: -0.03em;
+  margin-top: 2.5rem;
+}
+
+.notfound p { margin-top: 0.875rem; color: var(--muted); }
+.notfound .home-link { color: var(--text); font-weight: 500; }
+
+/* Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .product:hover { transform: none; }
+  .product:hover .product-link .arrow { transform: none; }
+}
