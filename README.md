@@ -4,7 +4,8 @@ The website for Ghura Labs, a small studio in Ontario, Canada, making apps and
 games. It is one static page that lists the studio's products (currently
 [Chalkalong](https://chalkalong.com)) and a contact address.
 
-There is no framework, build step or JavaScript: just HTML, CSS and images.
+There is no framework or build step: just HTML, CSS, images and one tiny
+script (`year.js`) that keeps the footer year current.
 
 ## Files
 
@@ -12,6 +13,7 @@ There is no framework, build step or JavaScript: just HTML, CSS and images.
 | --- | --- |
 | `index.html` | The page |
 | `styles.css` | All styles, with light and dark themes (colors are CSS custom properties at the top) |
+| `year.js` | Sets the footer year; the page works fine without it |
 | `404.html` | Not-found page (Cloudflare Pages serves it automatically) |
 | `assets/` | Product icons and screenshots (cached for a year, see below) |
 | `favicon.svg`, `apple-touch-icon.png` | Icons |
@@ -50,7 +52,8 @@ Writing guidelines: no em dashes in visible text.
 Files in `/assets/` are cached for a year as immutable, so **give a changed image
 a new filename** (for example `chalkalong-lesson-2.jpg`) rather than overwriting it.
 
-Each January, update the year in the footer of `index.html`.
+The footer year updates itself via `year.js` (the year in the HTML is only a
+fallback for when JavaScript is off).
 
 ## Deploy
 
