@@ -16,7 +16,7 @@ script (`year.js`) that keeps the footer year current.
 | `year.js` | Sets the footer year; the page works fine without it |
 | `404.html` | Not-found page (Cloudflare Pages serves it automatically) |
 | `assets/` | Product icons and screenshots (cached for a year, see below) |
-| `favicon.svg`, `apple-touch-icon.png` | Icons |
+| `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` | Icons (the .ico is a 16/32/48px fallback for older browsers) |
 | `og-image.png` | 1200x630 social sharing image |
 | `_headers` | Cloudflare Pages security and cache headers |
 | `robots.txt`, `sitemap.xml` | For search engines |
