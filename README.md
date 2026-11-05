@@ -18,6 +18,7 @@ script (`year.js`) that keeps the footer year current.
 | `404.html` | Not-found page (Cloudflare Pages serves it automatically) |
 | `assets/` | Product icons and screenshots (cached for a year, see below) |
 | `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` | Icons (the .ico is a 16/32/48px fallback for older browsers) |
+| `brand/` | Logo files for use elsewhere (LinkedIn, app stores, press). See below |
 | `og-image.png` | 1200x630 social sharing image |
 | `_headers` | Cloudflare Pages security and cache headers |
 | `robots.txt`, `sitemap.xml` | For search engines |
@@ -69,3 +70,16 @@ The site deploys on Cloudflare Pages from the `main` branch:
 - Build output directory: `/`
 
 Every push to `main` goes live. Other branches get preview URLs.
+
+## Brand files
+
+The logo is the white "g" tile plus "Ghura Labs" in Figtree Bold. `favicon.svg`
+is the source for the mark; the files in `brand/` are exports of it.
+
+| File | Use it for |
+| --- | --- |
+| `ghuralabs-mark.svg`, `ghuralabs-mark-512.png` | The mark with rounded corners, anywhere a standalone icon fits |
+| `ghuralabs-mark-square.svg`, `ghuralabs-mark-square-400.png` | Full-bleed square for avatars that crop or round it themselves (LinkedIn page logo, social profiles) |
+| `ghuralabs-logo-on-light.png` | Mark plus wordmark, transparent, for light backgrounds |
+| `ghuralabs-logo-on-dark.png` | The same, for dark backgrounds |
+| `linkedin-cover.png` | LinkedIn page cover (1128x191 at 2x). Kept to the right because LinkedIn puts the logo over the bottom left |
