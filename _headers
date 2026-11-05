@@ -21,3 +21,12 @@
 
 /og-image.png
   Cache-Control: public, max-age=86400
+
+# Revalidate on every visit so style and script changes show up right away
+# (Cloudflare otherwise lets browsers cache them for 4 hours). The ETag keeps
+# repeat visits cheap.
+/styles.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/year.js
+  Cache-Control: public, max-age=0, must-revalidate
