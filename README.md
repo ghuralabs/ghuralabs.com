@@ -55,7 +55,7 @@ Chalkalong `<li class="legal-product">` block) linking to its terms and privacy 
 Writing guidelines: no em dashes in visible text.
 
 Files in `/assets/` are cached for a year as immutable, so **give a changed image
-a new filename** (for example `chalkalong-lesson-2.jpg`) rather than overwriting it.
+a new filename** (for example `chalkalong-snap-2.jpg`) rather than overwriting it.
 
 The footer year updates itself via `year.js` (the year in the HTML is only a
 fallback for when JavaScript is off).

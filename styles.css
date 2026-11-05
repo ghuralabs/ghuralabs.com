@@ -1,4 +1,4 @@
-/* Ghura Labs. Palette from the Chalkalong logo. */
+/* Ghura Labs. Chalkboard black and white, with yellow chalk for focus and status. */
 
 :root {
   --board: #1c1c1c;
@@ -156,17 +156,6 @@ ul[role="list"] { list-style: none; margin: 0; padding: 0; }
 .wordmark a {
   text-decoration: none;
   display: inline-block;
-}
-
-.wordmark .dot,
-.brand-dot {
-  display: inline-block;
-  width: 0.2em;
-  height: 0.2em;
-  margin-left: 0.07em;
-  border-radius: 50%;
-  background: var(--accent);
-  vertical-align: baseline;
 }
 
 .tagline {
